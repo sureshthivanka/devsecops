@@ -1,29 +1,15 @@
-# This is a basic workflow to help you get started with Actions
-
-name: Zap Web Application Scan
-
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the main branch
+name: site-security-scan
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  zap_scan:
+  build:
     runs-on: ubuntu-latest
-    name: Scan the webapplication
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          ref: master
-      - name: ZAP Scan
-        uses: zaproxy/action-full-scan@v0.2.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          docker_name: 'owasp/zap2docker-stable'
-          target: 'http://18.224.170.245/'
-          cmd_options: '-x report_xml'
+    steps:     
+    - name: OWASP ZAP Baseline Scan
+      uses: zaproxy/action-baseline@v0.3.0
+      with:
+        target: "http://18.224.170.245/"
