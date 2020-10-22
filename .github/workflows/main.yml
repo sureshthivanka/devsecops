@@ -19,6 +19,6 @@ jobs:
         uses: zaproxy/action-baseline@v0.4.0
         with:
           token: ${{ github.token }}
-          target: 'http://18.224.170.245/'
+          target: 'http://dvwa.wzo2.com/'
           issue_title: ZAP Scan Baseline Report
-          cmd_options: '-X report_xml.xml'
+          cmd_options: '-x report_xml.xml'
