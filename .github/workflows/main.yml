@@ -21,4 +21,4 @@ jobs:
           token: ${{ github.token }}
           target: 'http://18.224.170.245/'
           issue_title: ZAP Scan Baseline Report
-          cmd_options: '-x report_xml.xml'
+          cmd_options: '-X report_xml.xml'
